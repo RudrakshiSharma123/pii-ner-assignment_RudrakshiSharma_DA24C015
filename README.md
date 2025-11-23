@@ -18,8 +18,7 @@ The trained model and tokenizer are saved in:
 
 out_mini/
 
-yaml
-Copy code
+
 
 ---
 
@@ -41,7 +40,7 @@ data/dev.jsonl — 150 synthetic examples
 
 3. Train the model
 bash
-Copy code
+
 python src/train.py \
   --model_name google/bert_uncased_L-4_H-256_A-4 \
   --train data/train.jsonl \
@@ -49,20 +48,20 @@ python src/train.py \
   --out_dir out_mini
 4. Run prediction
 bash
-Copy code
+
 python src/predict.py \
   --model_dir out_mini \
   --input data/dev.jsonl \
   --output out_mini/dev_pred.json
 5. Evaluate span-level performance
 bash
-Copy code
+
 python src/eval_span_f1.py \
   --gold data/dev.jsonl \
   --pred out_mini/dev_pred.json
 6. Measure latency
 bash
-Copy code
+
 python src/measure_latency.py \
   --model_dir out_mini \
   --input data/dev.jsonl
@@ -99,7 +98,7 @@ Achieved perfect detection on the synthetic dev set with very low latency.
 
 Repository Structure
 graphql
-Copy code
+
 src/                  # training, prediction, evaluation, latency scripts
 data/                 # synthetic training & dev data
 out_mini/             # trained BERT-Mini model + predictions
