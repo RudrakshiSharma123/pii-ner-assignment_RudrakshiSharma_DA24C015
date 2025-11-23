@@ -28,9 +28,9 @@ out_mini/
 
 ```bash
 pip install -r requirements.txt
+
 2. Generate synthetic train & dev datasets
 bash
-Copy code
 python create_synth_data.py
 This creates:
 
@@ -40,31 +40,31 @@ data/dev.jsonl — 150 synthetic examples
 
 3. Train the model
 bash
-
 python src/train.py \
   --model_name google/bert_uncased_L-4_H-256_A-4 \
   --train data/train.jsonl \
   --dev data/dev.jsonl \
   --out_dir out_mini
+
 4. Run prediction
 bash
-
 python src/predict.py \
   --model_dir out_mini \
   --input data/dev.jsonl \
   --output out_mini/dev_pred.json
+
 5. Evaluate span-level performance
 bash
-
 python src/eval_span_f1.py \
   --gold data/dev.jsonl \
   --pred out_mini/dev_pred.json
+
 6. Measure latency
 bash
-
 python src/measure_latency.py \
   --model_dir out_mini \
   --input data/dev.jsonl
+
 Final Metrics (Dev Set)
 Metric	Score
 Entity-wise F1	1.00
@@ -98,7 +98,6 @@ Achieved perfect detection on the synthetic dev set with very low latency.
 
 Repository Structure
 graphql
-
 src/                  # training, prediction, evaluation, latency scripts
 data/                 # synthetic training & dev data
 out_mini/             # trained BERT-Mini model + predictions
